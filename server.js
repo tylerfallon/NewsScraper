@@ -7,6 +7,8 @@ var request = require('request');
 var mongoose = require('mongoose');
 var Article = require('./article.js');
 
+var articleTitle = [];
+
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -25,8 +27,6 @@ db.on('error', function(err) {
 db.once('open', function() {
   console.log('Mongoose connection successful.');
 });
-
-var articleTitle = [];
 
 request('http://www.huffingtonpost.com/section/sports', function(err, res, html) {
   var $ = cheerio.load(html);
